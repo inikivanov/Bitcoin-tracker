@@ -3,6 +3,9 @@ Application with public api access.
 Simple application for showing graphics collected using the Bitfinex API and tracks the bitcoin trades compared to USD. 
 Subscribe for notified users when the price goes above the limit set by the user.
 
+    - Start with:
+        * git clone https://github.com/inikivanov/test.git {your folder name}
+
 ## Reqirements
 My operation system is Ubuntu 22.04. 
 With this requirements will work anyware.
