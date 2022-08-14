@@ -54,6 +54,8 @@ mysql  Ver 8.0.30-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
     - php artisan serve
 
 ## Check comand for job and activate it for crontab - it's setup ->dayly() in /app/Console/Karnel.php
+    - php artisan schedule:run
+    
     - php artisan api:data-notify
 
     - If using mailtrap there is possible error return from Mailtrap with limit of 5 messages per seconds.
