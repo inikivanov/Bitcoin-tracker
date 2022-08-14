@@ -20,18 +20,40 @@ Zend Engine v4.1.8, Copyright (c) Zend Technologies
 * MySql
 mysql  Ver 8.0.30-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
 
-## Install Commands
+## .env
+    - DB_DATABASE={db_name} - your DB name 
+    - DB_USERNAME={username} - your DB username
+    - DB_PASSWORD={password} - your DB password
+
+    - APIDATA_SIMBOL=BTCUSD - or what we want to use - this is for bitcoin in usd - from https://docs.bitfinex.com/v1/referencerest-public-ticker#rest-public-ticker
+    
+    - The important setup is mail in  .env file. I used settings from mailtrap.io to test mail sending.
+
+    - APIDATA_SLEEP_TIMER_SENDING_MAIL=5 - This add because mailtrap has limit for receiving mails per seconds and send mails between 5 second when is set to 5 if we do need to use we can just set false or what seconds we need between mails
+
+## Installation
 composer install
 
 * need setup db for usage before to go in .env
 
 php artisan migrate
+- seed dummy data for table bitfinex - where we store data from external api https://api.bitfinex.com/v1/pubticker/{simbol}
+this will seed rows for one year for every day in year to one row
+php artisan db:seed --class=ChartSeeder
+- see dummy data for subscriptions table
+php artisan db:seed --class=SubscribersSeeder
+
+- Or just run
+php artisan db:seed
+
 
 ## Start app
 php artisan serve
 
 ## Check comand for job and activate it for crontab - it's setup ->dayly() in /app/Console/Karnel.php
 php artisan api:data-notify
+
+    - If using mailtrap there is possible error return from Mailtrap with limit of 5 messages per seconds.
 
 crontab -e
 add this row in file and save it - This will start chron job on server
@@ -42,22 +64,11 @@ add this row in file and save it - This will start chron job on server
     - POST - {your main app url}/api/subscribe-for-notifications - user can subscribe when the price goes above the limit set by the user
         * weit for 'email' and 'amount' from POST request form-data
 
-## .env
-    - DB_DATABASE={db_name} - your DB name 
-    - DB_USERNAME={username} - your DB username
-    - DB_PASSWORD={password} - your DB password
-
-    - APIDATA_SIMBOL=BTCUSD - or what we want to use - this is for bitcoin in usd - from https://docs.bitfinex.com/v1/referencerest-public-ticker#rest-public-ticker
-    
-    - The other is setup for mail - this is important. I use settings from mailtrap.io to test mail sending
-
 ## Test the app
-    - first setup APP_ENV from local to testing
-    - setup phpunit.xml
-        <env name="DB_CONNECTION" value="sqlite"/>
-        <env name="DB_DATABASE" value=":memory:"/>
     - testcases:
         * test return chart data
-        * test subscribe a user
-        * test receive and insert chart data
-        * test send mail to subscribers
+        * test command api:data-notify
+        * test insert chart data
+        * test subscribe a user without valid data 
+        * test subscribe a user - insert in DB
+        * test do not subscribe user twice - check exists

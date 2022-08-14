@@ -41,17 +41,17 @@ class ApiDataNotify extends Command
         $msg = '';
         if($chartRepository->insertChart($chartData))
         {
-            $msg = __('notify.successfully_insert_row_chart');
+            $msg = 'Successfully insert new chart row in bitfinex table.';
         }  
         if(!empty($msg)){
             $msg .= ' ';
         }
         if($notifyService->checkAndNotify($chartData))
         {
-            $msg .= __('notify.successfully_notify_subscribers');
+            $msg .= 'Notify Subscriber(s) successfully.';
         } 
         if(empty($msg)){
-            $msg = __('notify.error');
+            $msg = 'Some is Wrong';
         }
         
         $this->info($msg);

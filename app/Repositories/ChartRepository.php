@@ -19,7 +19,7 @@ class ChartRepository
      * Get charts 
      * @param int $subtrack
      */
-    public function getCharts($subtrack = 10, $simbol = false)
+    public function getCharts($subtrack = 12, $simbol = false)
     {
         $result = $this->model::where('timestamp', '>=', Carbon::now()->subMonths($subtrack)->toDateTimeString());
 

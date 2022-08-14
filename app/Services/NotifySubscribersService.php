@@ -28,6 +28,9 @@ class NotifySubscribersService
                             ->chunk(20, function ($subscribers) use ($chartData){
                                 foreach($subscribers as $subscriber){
                                     $this->notify($subscriber, $chartData);
+                                    if(env('APIDATA_SLEEP_TIMER_SENDING_MAIL')){
+                                        sleep(env('APIDATA_SLEEP_TIMER_SENDING_MAIL'));
+                                    }
                                 }
                             });
     }
@@ -41,10 +44,7 @@ class NotifySubscribersService
      */
     public function notify($subscriber, $chartData)
     {
-        dump($subscriber->email, $chartData['last_price']);
-
         $mailData = [
-
             'title' => __('notify.mail.title'),
             'body' => __('notify.mail.body', [
                         'price' => $chartData['last_price'], 
@@ -52,6 +52,8 @@ class NotifySubscribersService
                         'amount' => $subscriber->amount
             ])
         ];
+
         Mail::to($subscriber->email)->send(new NotifyMail($mailData));
+        
     }
 }
