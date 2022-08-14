@@ -37,7 +37,7 @@ class ChartRepository
      */
     public function insertChart($chart){
 
-        if(isset($chart['message']) && $chart['message'] == 'Unknown symbol')
+        if(isset($chart['message']) && $chart['message'] == __('notify.chart.uncknow_simbol'))
         {
             return false;
         }

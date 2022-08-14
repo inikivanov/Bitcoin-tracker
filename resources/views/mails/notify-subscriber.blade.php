@@ -2,12 +2,12 @@
 
 <html>
     <head>
-        <title>Ampeco Test App</title>
+        <title>{{__('notify.html_title')}}</title>
     </head>
     <body>
         <h1>{{ $mailData['title'] }}</h1>
 
         <p>{{ $mailData['body'] }}</p>
-        <p>Thank you!</p>
+        <p>{{__('notify.thansk')}}</p>
     </body>
 </html>

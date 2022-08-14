@@ -21,7 +21,7 @@ class SubscribeNotificationController extends Controller
         return response()->json([
             'data' => $response,
             'status' => 'success',
-            'message' => 'Set Notifications success!'
+            'message' => __('notify.successfylly_set_notification')
         ], 200);
     }
 }

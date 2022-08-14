@@ -45,9 +45,12 @@ class NotifySubscribersService
 
         $mailData = [
 
-            'title' => 'Mail from Ampeco Test App',
-
-            'body' => 'The price of BTC is ' . $chartData['last_price'] . ' USD in ' . Carbon::parse($chartData['timestamp'])->toDateTimeString() . ' has exceeded the limit you entered of ' . $subscriber->amount . ' USD.'
+            'title' => __('notify.mail.title'),
+            'body' => __('notify.mail.body', [
+                        'price' => $chartData['last_price'], 
+                        'time' => Carbon::parse($chartData['timestamp'])->toDateTimeString(),
+                        'amount' => $subscriber->amount
+            ])
         ];
         Mail::to($subscriber->email)->send(new NotifyMail($mailData));
     }
