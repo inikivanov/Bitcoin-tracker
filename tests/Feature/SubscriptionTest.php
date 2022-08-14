@@ -42,7 +42,7 @@ class SubscriptionTest extends TestCase
      *
      * @return void
      */
-    public function test_create_subscription_with_used_email()
+    public function test_check_create_subscription_with_used_email()
     {
 
         $row = Subscription::factory()->create([
