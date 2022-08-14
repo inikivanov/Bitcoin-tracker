@@ -15,7 +15,7 @@ class ChartTest extends TestCase
      *
      * @return void
      */
-    public function test_return_charts_from_api_successfully()
+    public function test_retrive_charts_data_successfully()
     {
         $response = $this->get('/api/chart');
 

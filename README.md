@@ -67,9 +67,9 @@ mysql  Ver 8.0.30-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
 ## Test the app
     - php artisan test
     - testcases:
-        * test return chart data
-        * test command api:data-notify
-        * test insert chart data
-        * test subscribe a user without valid data 
-        * test subscribe a user - insert in DB
-        * test do not subscribe user twice - check exists
+        * test return chart data - retrive charts data successfully
+        * test command api:data-notify - console command runned from job in application
+        * test insert chart data - insert new chart data bitfinex table
+        * test subscribe a user without valid data - create new subscription without form data
+        * test subscribe a user - insert in DB - create new subscription
+        * test do not subscribe user twice - check exists - insert new chart data bitfinex table
