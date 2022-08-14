@@ -48,7 +48,7 @@ class NotifySubscribersService
             'title' => __('notify.mail.title'),
             'body' => __('notify.mail.body', [
                         'price' => $chartData['last_price'], 
-                        'time' => Carbon::parse($chartData['timestamp'])->toDateTimeString(),
+                        'datetime' => Carbon::parse($chartData['timestamp'])->toDateTimeString(),
                         'amount' => $subscriber->amount
             ])
         ];
