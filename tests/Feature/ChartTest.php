@@ -38,7 +38,7 @@ class ChartTest extends TestCase
      * 
      * return void
      */
-    public function test_insert_new_chart_data_bitfinex()
+    public function test_insert_new_chart_data_bitfinex_table()
     {
         $chart = Bitfinex::factory()->create();
  
