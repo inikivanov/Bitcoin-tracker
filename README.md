@@ -55,14 +55,14 @@ mysql  Ver 8.0.30-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
 
 ## Check comand for job and activate it for crontab - it's setup ->dayly() in /app/Console/Karnel.php
     - php artisan schedule:run
-    
+
     - php artisan api:data-notify
 
     - If using mailtrap there is possible error return from Mailtrap with limit of 5 messages per seconds.
 
     - crontab -e
         * add this row in file and save it - This will start chron job on server
-        - * * * * * cd /your-project-path && php artisan schedule:run >> /dev/null 2>&1
+        - * * * * * cd /{your-project-path} && php artisan schedule:run >> /dev/null 2>&1
 
 ## public api urls to use in postman
     - GET - {your main app url}/api/chart - retrive data for chart.js 
