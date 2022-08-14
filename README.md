@@ -27,7 +27,7 @@ mysql  Ver 8.0.30-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
 
     - APIDATA_SIMBOL=BTCUSD - or what we want to use - this is for bitcoin in usd - from https://docs.bitfinex.com/v1/referencerest-public-ticker#rest-public-ticker
     
-    - The important setup is mail in  .env file. I used settings from mailtrap.io to test mail sending.
+    - IMPORTANT setup is mail in  .env file. I used settings from mailtrap.io to test mail sending.
 
     - APIDATA_SLEEP_TIMER_SENDING_MAIL=5 - This add because mailtrap has limit for receiving mails per seconds and send mails between 5 second when is set to 5 if we do need to use we can just set false or what seconds we need between mails
 
@@ -36,7 +36,7 @@ mysql  Ver 8.0.30-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
 
     - we need setup db for usage before to go in .env
     - php artisan migrate
-    
+
     - seed dummy data for table bitfinex - where we store data from external api https://api.bitfinex.com/v1/pubticker/{simbol}
         this will seed rows for one year for every day in year to one row
         * php artisan db:seed --class=ChartSeeder
