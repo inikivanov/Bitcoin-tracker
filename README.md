@@ -4,7 +4,7 @@ Simple application for showing graphics collected using the Bitfinex API and tra
 Subscribe for notified users when the price goes above the limit set by the user.
 
     - Start with:
-        * git clone https://github.com/inikivanov/test.git {your folder name}
+        * git clone https://github.com/inikivanov/Bitcoin-tracker.git {your folder name}
 
 ## Reqirements
 My operation system is Ubuntu 22.04. 
